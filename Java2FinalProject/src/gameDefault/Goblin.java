@@ -1,15 +1,30 @@
 package gameDefault;
 
-public class Goblin implements Monsters{
-			
-	@Override
-	public int attack() {
-		return ATTACK;
-	}
+public class Goblin extends CharacterClass{
 
-	@Override
-	public int specialMove() {
-		return DEFENCE + 2;
+	public Goblin()
+	{
+		className = "Goblin";
+		attack += 2;
+		health += 15;
+		isHero = false;
 	}
-
+	
+	@Override
+	public int useSkill(int choice)
+	{
+		if (choice == 1)
+		{
+			System.out.println("Goblin attacks!");
+			return getAttack();
+		}
+		
+		return 0;
+	}
+	
+	public String skillSet()
+	{
+		return "1. attack\n";
+	}
+	
 }

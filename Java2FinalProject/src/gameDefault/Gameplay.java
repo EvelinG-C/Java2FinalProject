@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+// each turn won earn money or prizes
+// and when they lose they can write into a file that shows what they earned: mone and prize
+
 public class Gameplay {
 
 	public static void main(String[] args) {
@@ -13,102 +16,51 @@ public class Gameplay {
 		WarriorClass warrior = new WarriorClass();
 		Scanner scan = new Scanner(System.in);
 		
-		// max size of player list is 3; should i make an arraylist as well
-		Player[] currentPlayers = new Player[3];
-		ArrayList<BaseCharacterClass> classNames = new ArrayList<BaseCharacterClass>();
-		classNames.add(healer);
-		classNames.add(tank);
-		classNames.add(warrior);
+		ArrayList<CharacterClass> heroList = new ArrayList<CharacterClass>();
+		heroList.add(healer);
+		heroList.add(tank);
+		heroList.add(warrior);
 		
-		// should i have it so that 3 players must be in it
-//		System.out.print("How many players? (3 max) ");
-//		
-//		while(!scan.hasNextInt())
-//		{
-//			System.out.println("Please enter a number: ");
-//			scan.next();
-//		}
-//		
-//		int players = scan.nextInt();
+
+		System.out.print("what is your first name? ");
+		String fName = scan.next();
 		
-		for (int idx = 0; idx < currentPlayers.length; idx++)
+		System.out.print("What is your last name? ");
+		String lName = scan.next();
+		
+		String nName = null;
+		System.out.print("Would you like to use a nickname? (y or n) ");
+		String nickNameChoice = scan.next();
+		
+		if (nickNameChoice.equalsIgnoreCase("y"))
 		{
-			System.out.print("what is your first name? ");
-			String fName = scan.next();
-			
-			System.out.print("What is your last name? ");
-			String lName = scan.next();
-			
-			String nName = null;
-			System.out.print("Would you like to use a nickname? (y or n) ");
-			String nickNameChoice = scan.next();
-			
-			if (nickNameChoice.equalsIgnoreCase("y"))
-			{
-				System.out.println("What would you like your nick name to be? ");
-				scan.nextLine();
-				nName = scan.nextLine();
-			}
-			
-			System.out.println("Which class would you like?");
-			
-			for (int idx2 = 0; idx2 < classNames.size(); idx2++)
-			{
-				System.out.println(idx2 + 1 + ". " + classNames.get(idx2).getClassName());
-			}
-			
-			System.out.println("Please chose: ");
-			
-			while(!scan.hasNextInt())
-			{
-				System.out.println("Please enter a number: ");
-				scan.next();
-			}
-			
-			int choice = scan.nextInt();
-			
-			switch(choice)
-			{
-				case 1:
-					if (nName == null)
-					{
-						currentPlayers[idx] = new Player(fName,lName,classNames.get(0));
-					}
-					else
-					{
-						currentPlayers[idx] = new Player(fName,lName,nName,classNames.get(0));
-					}
-					
-					break;
-				case 2:
-					if (nName == null)
-					{
-						currentPlayers[idx] = new Player(fName,lName,classNames.get(1));
-					}
-					else
-					{
-						currentPlayers[idx] = new Player(fName,lName,nName,classNames.get(1));
-					}
-					
-					break;
-				case 3:
-					if (nName == null)
-					{
-						currentPlayers[idx] = new Player(fName,lName,classNames.get(2));
-					}
-					else
-					{
-						currentPlayers[idx] = new Player(fName,lName,nName,classNames.get(2));
-					}
-					break;
-			}
+			System.out.print("What would you like your nick name to be? ");
+			scan.nextLine();
+			nName = scan.nextLine();
 		}
 		
-		for (int i = 0; i < currentPlayers.length; i++)
+		if (nName == null)
 		{
-			System.out.println(currentPlayers[i].getPlayerInfo());
-			System.out.println();
+			player = new Player(fName,lName);
 		}
+		else 
+		{
+			player = new Player(fName, lName, nName);
+		}
+			
+		System.out.println();
+		System.out.println("Hello! you been in charge of leading a group of heros into a dungeion.\n"
+				+ "While you explore, you will encounter monsters that while try to defeat you and kill\n"
+				+ "your party memebers. Keep them ALIVE! You will earn money and items as you progresss.\n"
+				+ "Good Luck!");
+		
+		System.out.println();
+		System.out.println(player.getPlayerInfo());
+		System.out.println();
+		
+		GameTurn gameTurn = new GameTurn();
+		gameTurn.startRound(player, scan, heroList);
+		
 	}
 
 }

@@ -5,21 +5,19 @@ public class Player
 	private String firstName;
 	private String lastName;
 	private String nickName;
-	private BaseCharacterClass characterClass;
+	private int money;
 	
-	public Player(String fName, String lName, BaseCharacterClass charClass)
+	public Player(String fName, String lName)
 	{
 		firstName = fName;
 		lastName = lName;
-		characterClass = charClass;
 	}
 	
-	public Player(String fName, String lName, String nName, BaseCharacterClass charClass)
+	public Player(String fName, String lName, String nName)
 	{
 		firstName = fName;
 		lastName = lName;
 		nickName = nName;
-		characterClass = charClass;
 	}
 	
 	public String getFirstName()
@@ -30,6 +28,16 @@ public class Player
 	public String getLastName()
 	{
 		return lastName;
+	}
+	
+	public int getMoney()
+	{
+		return money;
+	}
+	
+	public int addMoney(int amount)
+	{
+		return money + amount;
 	}
 	
 	public String getNickName()
@@ -44,16 +52,11 @@ public class Player
 		}
 	}
 	
-	public String getCharacterClassName()
-	{
-		return characterClass.getClassName();
-	}
-	
 	public String getPlayerInfo()
 	{
 		return "First name: " + getFirstName() +"\n"
 				+ "Last name: " + getLastName() + "\n"
 				+ "Nick name: " + getNickName() + "\n"
-				+ "Character class: " + getCharacterClassName();
+				+ "Coins: " + getMoney();
 	}
 }
