@@ -5,7 +5,7 @@ public class Player
 	private String firstName;
 	private String lastName;
 	private String nickName;
-	private int money;
+	private int money = 0;
 	
 	public Player(String fName, String lName)
 	{
@@ -35,9 +35,9 @@ public class Player
 		return money;
 	}
 	
-	public int addMoney(int amount)
+	public void addMoney(int amount)
 	{
-		return money + amount;
+		money += amount;
 	}
 	
 	public String getNickName()

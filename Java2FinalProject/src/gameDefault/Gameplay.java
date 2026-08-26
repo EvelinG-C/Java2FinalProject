@@ -19,6 +19,7 @@ public class Gameplay {
 		Random rand = new Random();
 		Money money = new Money();
 		Items item = new Items();
+		CreateStatsFile playerFile = new CreateStatsFile();
 		
 		ArrayList<CharacterClass> heroList = new ArrayList<CharacterClass>();
 		heroList.add(healer);
@@ -96,6 +97,14 @@ public class Gameplay {
 			else
 			{
 				money.displayWinnings(player, wonGame);
+			}
+			
+			System.out.println();
+			System.out.print("Would you like a file of your player stats? ( y or n) ");
+			String playerStats = scan.next();
+			if (playerStats.equals("y"))
+			{
+				playerFile.createCharacterFile(player, itemsWon);
 			}
 			
 			System.out.println();

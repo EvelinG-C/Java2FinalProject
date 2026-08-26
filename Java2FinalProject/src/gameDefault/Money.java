@@ -8,7 +8,7 @@ public class Money implements Rewards{
 	private int moneyLost;
 
 	@Override
-	public int displayWinnings(Player player, Boolean didWin) {
+	public int displayWinnings(Player player, boolean didWin) {
 		
 		moneyEarned = rand.nextInt(100) + 1;
 		moneyLost = rand.nextInt(100) + 1; 
@@ -22,7 +22,7 @@ public class Money implements Rewards{
 		else
 		{
 			player.addMoney(-moneyLost);
-			System.out.println("You lost " + moneyLost + "coins!");
+			System.out.println("You lost " + moneyLost + " coins!");
 			System.out.println();
 		}
 		return 0;

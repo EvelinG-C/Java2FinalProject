@@ -15,7 +15,7 @@ public class Items implements Rewards{
 	}
 
 	@Override
-	public int displayWinnings(Player player, Boolean didWin) {
+	public int displayWinnings(Player player, boolean didWin) {
 		
 		if (didWin == true)
 		{
