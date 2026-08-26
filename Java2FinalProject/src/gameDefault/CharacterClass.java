@@ -48,6 +48,13 @@ public class CharacterClass
 		return isHero;
 	}
 	
+	public void resetCharacterStats()
+	{
+		health = 10;
+		attack = 0;
+		defence = 10;
+	}
+	
 	public int useSkill(int choice)
 		throws InvalidSkillException
 	{

@@ -2,6 +2,7 @@ package gameDefault;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 // each turn won earn money or prizes
@@ -15,12 +16,16 @@ public class Gameplay {
 		TankClass tank = new TankClass();
 		WarriorClass warrior = new WarriorClass();
 		Scanner scan = new Scanner(System.in);
+		Random rand = new Random();
+		Money money = new Money();
+		Items item = new Items();
 		
 		ArrayList<CharacterClass> heroList = new ArrayList<CharacterClass>();
 		heroList.add(healer);
 		heroList.add(tank);
 		heroList.add(warrior);
 		
+		ArrayList<String> itemsWon = new ArrayList<String>();
 
 		System.out.print("what is your first name? ");
 		String fName = scan.next();
@@ -59,8 +64,54 @@ public class Gameplay {
 		System.out.println();
 		
 		GameTurn gameTurn = new GameTurn();
-		gameTurn.startRound(player, scan, heroList);
 		
+		boolean enterAgain = true;
+		System.out.println("Would you like to enter the dungeon? (y or n) ");
+		String playerChoice = scan.next();
+		
+		if (!playerChoice.equals("y"))
+		{
+			enterAgain = false;
+		}
+		
+		while (enterAgain)
+		{
+			boolean wonGame = gameTurn.startRound(player, scan, heroList);
+			
+			if (wonGame)
+			{
+				int randomPrize = rand.nextInt(2);
+				// get money
+				if (randomPrize == 0)
+				{
+					money.displayWinnings(player, wonGame);
+				}
+				// get items
+				else
+				{
+					item.displayWinnings(player, wonGame);
+					itemsWon.add(item.reward);
+				}
+			}
+			else
+			{
+				money.displayWinnings(player, wonGame);
+			}
+			
+			System.out.println();
+			System.out.println("Would you like to enter the dungeion again? (y or n) ");
+			playerChoice = scan.next();
+			if (playerChoice.equals("y"))
+			{
+				enterAgain = true;
+			}
+			else
+			{
+				enterAgain = false;
+			}
+			System.out.println();
+		}
+		
+		System.out.println("Thanks for playing!");
 	}
-
 }

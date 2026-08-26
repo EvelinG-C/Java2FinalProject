@@ -14,6 +14,13 @@ public class TankClass extends CharacterClass
 	}
 	
 	@Override
+	public void resetCharacterStats()
+	{
+		health = 10;
+		defence = 2;
+	}
+	
+	@Override
 	public int useSkill(int choice) 
 			throws InvalidSkillException
 	{

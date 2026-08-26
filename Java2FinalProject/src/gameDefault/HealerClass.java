@@ -5,6 +5,7 @@ public class HealerClass extends CharacterClass
 	public HealerClass()
 	{
 		className = "Healer";
+		attack += 2;
 		defence += 1;
 	}
 	
@@ -15,6 +16,12 @@ public class HealerClass extends CharacterClass
 		int maxHealth = 10;
 		int newHealth = Math.min(maxHealth, character.getHealth() + healing);
 		character.setHealth(newHealth);
+	}
+	
+	@Override
+	public void resetCharacterStats()
+	{
+		health = 10;
 	}
 	
 	@Override

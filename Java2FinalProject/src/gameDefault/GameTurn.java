@@ -17,9 +17,12 @@ public class GameTurn
 	
 	public boolean startRound(Player player, Scanner scan, ArrayList<CharacterClass> heroList)
 	{
+		turnQueue.clear();
+		
 		for (CharacterClass hero: heroList)
 		{
 			turnQueue.offer(hero);
+			hero.resetCharacterStats();
 		}
 		
 		int numOfMonsters = rand.nextInt(5) + 1;
@@ -197,7 +200,6 @@ public class GameTurn
 		}
 	}
 	
-	
 	public CharacterClass monsterType()
 	{
 		int monsterType = rand.nextInt(2);
@@ -243,8 +245,6 @@ public class GameTurn
 			
 			if(!hero.isAlive())
 			{
-				// may or may not keep line below. idk if i wan to remove hero
-				// from herolist
 				heroList.remove(idx);
 				turnQueue.remove(hero);
 			}

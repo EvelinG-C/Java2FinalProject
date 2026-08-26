@@ -5,12 +5,19 @@ public class WarriorClass extends CharacterClass
 	public WarriorClass() {
 		className = "Warror";
 		attack += 5;
-		defence += 2;
+		defence += 1;
 	}
 
 	public void boostAttack()
 	{
 		attack += 1;
+	}
+	
+	@Override
+	public void resetCharacterStats()
+	{
+		health = 10;
+		attack = 5;
 	}
 	
 	@Override
