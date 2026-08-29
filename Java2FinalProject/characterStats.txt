@@ -1,5 +1,0 @@
-First name: evelin
-Last name: 
-Nick name: 
-Coins: 0
-Rewards: [water]
