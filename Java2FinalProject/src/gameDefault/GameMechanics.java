@@ -399,8 +399,6 @@ public class GameMechanics
 		}
 	}
 	
-	// Character Information (Monsters and Heros)
-	
 	// This method gets the health of all the monsters
 	public void getMonsterHealth()
 	{
