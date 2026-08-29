@@ -1,7 +1,9 @@
 package gameDefault;
 
+// CHILD CLASS - Project Requirement
 public class Goblin extends CharacterClass{
 
+	// Default constructor
 	public Goblin()
 	{
 		className = "Goblin";
@@ -10,21 +12,17 @@ public class Goblin extends CharacterClass{
 		isHero = false;
 	}
 	
+	// OVERRIDEN METHOD - Project Requirement
+	// This method decides which skill to use
 	@Override
 	public int useSkill(int choice)
 	{
 		if (choice == 1)
 		{
-			System.out.println("Goblin attacks!");
+			GUI.gameDialogueArea.append("Goblin attacks!\n");
 			return getAttack();
 		}
 		
 		return 0;
 	}
-	
-	public String skillSet()
-	{
-		return "1. attack\n";
-	}
-	
 }

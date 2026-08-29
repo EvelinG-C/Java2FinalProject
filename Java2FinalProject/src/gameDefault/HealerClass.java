@@ -1,7 +1,9 @@
 package gameDefault;
 
+// CHILD CLASS - Project Requirement
 public class HealerClass extends CharacterClass
 {
+	// default constructor
 	public HealerClass()
 	{
 		className = "Healer";
@@ -9,8 +11,10 @@ public class HealerClass extends CharacterClass
 		defence += 1;
 	}
 	
+	// variable
 	int healing = 3;
 	
+	// This method heals a character's health
 	public void healing(CharacterClass character)
 	{
 		int maxHealth = 10;
@@ -18,12 +22,16 @@ public class HealerClass extends CharacterClass
 		character.setHealth(newHealth);
 	}
 	
+	// OVERRIDEN METHOD - Project Requirement
+	// This method resets the Healer's stats
 	@Override
 	public void resetCharacterStats()
 	{
 		health = 10;
 	}
 	
+	// OVERRIDEN METHOD - Project Requirement
+	// This method decides which skill to use
 	@Override
 	public int useSkill(int choice, CharacterClass character) 
 			throws InvalidSkillException
@@ -45,10 +53,13 @@ public class HealerClass extends CharacterClass
 		return 0;
 	}
 	
+	// OVERRIDEN METHOD - Project Requirement
+	// This method returns a string with the healer's skills
 	@Override
 	public String skillSet()
 	{
-		return "1. attack\n" +
-				"2. healing";
+		return "Healer's Skills: \n" +
+				"1. Attack\n" +
+				"2. Heal\n";
 	}
 }

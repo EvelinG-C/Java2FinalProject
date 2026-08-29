@@ -2,17 +2,20 @@ package gameDefault;
 
 public class Player
 {
+	// Variables
 	private String firstName;
 	private String lastName;
 	private String nickName;
 	private int money = 0;
 	
+	// Default Constructor
 	public Player(String fName, String lName)
 	{
 		firstName = fName;
 		lastName = lName;
 	}
 	
+	// OVERLOADED CONSTRUCTOR - Project Requirement
 	public Player(String fName, String lName, String nName)
 	{
 		firstName = fName;
@@ -20,6 +23,7 @@ public class Player
 		nickName = nName;
 	}
 	
+	// GETTER METHODS
 	public String getFirstName()
 	{
 		return firstName;
@@ -35,11 +39,6 @@ public class Player
 		return money;
 	}
 	
-	public void addMoney(int amount)
-	{
-		money += amount;
-	}
-	
 	public String getNickName()
 	{
 		if (nickName == null)
@@ -52,6 +51,13 @@ public class Player
 		}
 	}
 	
+	// Method changes the value of the money variable
+	public void addMoney(int amount)
+	{
+		money += amount;
+	}
+	
+	// Method returns a string with the Player's information
 	public String getPlayerInfo()
 	{
 		return "First name: " + getFirstName() +"\n"

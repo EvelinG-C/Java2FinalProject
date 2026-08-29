@@ -1,16 +1,12 @@
 package gameDefault;
 
+// CUSTOM EXCEPTION - Project Requirement
 public class InvalidSkillException extends Exception{
-	
-	public InvalidSkillException()
-	{
-		
-	}
 	
 	@Override
 	public String getMessage()
 	{
-		return ("Invalid skill was chosen.");
+		return ("Invalid skill was chosen.\n");
 	}
 
 }

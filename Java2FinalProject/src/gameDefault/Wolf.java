@@ -1,6 +1,9 @@
 package gameDefault;
 
+// CHILD CLASS - Project Requirement
 public class Wolf extends CharacterClass{
+	
+	// Default Constructor
 	public Wolf()
 	{
 		className = "Wolf";
@@ -9,20 +12,17 @@ public class Wolf extends CharacterClass{
 		isHero = false;
 	}
 	
+	// OVERRIDEN METHOD - Project Requirement
+	// This method decides which skill to use
 	@Override
 	public int useSkill(int choice)
 	{
 		if (choice == 1)
 		{
-			System.out.println("Wolf attacks!");
+			GUI.gameDialogueArea.append("Wolf attacks!\n");
 			return getAttack();
 		}
 		
 		return 0;
-	}
-	
-	public String skillSet()
-	{
-		return "1. attack\n";
 	}
 }
